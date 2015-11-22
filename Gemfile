@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'forest_liana'
 gem 'figaro'
 gem 'faker'
 ruby '2.2.2'
