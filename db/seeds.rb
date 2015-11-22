@@ -16,3 +16,13 @@
     time_zone: Faker::Address.time_zone,
   })
 end
+
+50.times do
+  item = Item.create({
+    name: Faker::Commerce.product_name,
+    description: Faker::Lorem.paragraph,
+    currency: "€",
+    price: Faker::Commerce.price,
+    category: Faker::Commerce.department(1),
+  })
+end
