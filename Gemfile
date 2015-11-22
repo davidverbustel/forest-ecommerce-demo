@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'figaro'
-gem 'faker'
+gem 'faker', group: :production
 ruby '2.2.2'
 gem 'rails_12factor', group: :production
 gem 'puma',           group: :production
