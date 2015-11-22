@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'figaro'
 gem 'faker'
 ruby '2.2.2'
 gem 'rails_12factor', group: :production
