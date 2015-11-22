@@ -79,15 +79,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  # <<: *default
-  # database: forest-ecommerce-demo_production
-  # username: forest-ecommerce-demo
-  # password: <%= ENV['FOREST-ECOMMERCE-DEMO_DATABASE_PASSWORD'] %>
-  adapter: postgresql
-  encoding: unicode
-  database: d1sqfj8n549nal
-  pool: 5
-  username: flvzvhvwsquhtw
-  password: kVKl-e_T6FqsYBKzkd6YkgEL9o
-  host: ec2-54-247-170-228.eu-west-1.compute.amazonaws.com
-  port: 5432
+  <<: *default
+  database: forest-ecommerce-demo_production
+  username: forest-ecommerce-demo
+  password: <%= ENV['FOREST-ECOMMERCE-DEMO_DATABASE_PASSWORD'] %>
