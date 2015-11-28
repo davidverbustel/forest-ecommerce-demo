@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'rack-cors'
 gem 'forest_liana'
 gem 'figaro'
 gem 'faker'
