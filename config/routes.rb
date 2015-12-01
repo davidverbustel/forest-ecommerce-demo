@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   mount ForestLiana::Engine => '/forest'
   post '/api/foo' => 'stats#foo'
   # The priority is based upon order of creation: first created -> highest priority.

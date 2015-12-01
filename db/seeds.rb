@@ -1,4 +1,3 @@
-
 50.times do
   customer = Customer.create({
     first_name: Faker::Name.first_name,
@@ -46,10 +45,10 @@ SHIPPING = ["UPS", "Fedex", "DHL"]
   })
 end
 
-500.times do
+50.times do
   order_item = OrderItem.create({
     item_order_quantity: rand(1..10),
     product_id: rand(1..50),
-    customer_order_id: rand(1..100)
+    customer_order_id: rand(1..50)
   })
 end
