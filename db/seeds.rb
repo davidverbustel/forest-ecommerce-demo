@@ -1,5 +1,5 @@
 
-50.times do
+100.times do
   customer = Customer.create({
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -19,7 +19,35 @@
   })
 end
 
-CATEGORY = ["Beauty", "Computers", "Books", "Outdoors", "Grocery","Jewelery"]
+
+category = Category.create(
+  [
+    {
+    name: "Beauty",
+    description: Faker::Lorem.paragraph
+    },
+    {
+    name: "Computers",
+    description: Faker::Lorem.paragraph
+    },
+    {
+    name: "Books",
+    description: Faker::Lorem.paragraph
+    },
+    {
+    name: "Outdoors",
+    description: Faker::Lorem.paragraph
+    },
+    {
+    name: "Grocery",
+    description: Faker::Lorem.paragraph
+    },
+    {
+    name: "Jewelery",
+    description: Faker::Lorem.paragraph
+    }
+  ]
+)
 
 50.times do
   product = Product.create({
@@ -27,7 +55,7 @@ CATEGORY = ["Beauty", "Computers", "Books", "Outdoors", "Grocery","Jewelery"]
     description: Faker::Lorem.paragraph,
     currency: "eur",
     price: Faker::Commerce.price,
-    category: CATEGORY.sample
+    category: Category.all.sample.name
   })
 end
 
@@ -36,7 +64,7 @@ SHIPPING = ["UPS", "Fedex", "DHL"]
 
 100.times do
   customer_order = CustomerOrder.create({
-    customer_id: rand(1..50),
+    customer_id: Customer.all.sample.id,
     order_placed_datetime: Faker::Time.between(DateTime.now - 20, DateTime.now),
     order_delivered_datetime: Faker::Time.between(DateTime.now + 5, DateTime.now + 20),
     order_shipping_charges: Faker::Number.decimal(2),
@@ -49,7 +77,8 @@ end
 500.times do
   order_item = OrderItem.create({
     item_order_quantity: rand(1..10),
-    product_id: rand(1..50),
-    customer_order_id: rand(1..100)
+    product_id: Product.all.sample.id,
+    customer_order_id: CustomerOrder.all.sample.id
   })
 end
+
