@@ -27,7 +27,8 @@ CATEGORY = ["Beauty", "Computers", "Books", "Outdoors", "Grocery","Jewelery"]
     description: Faker::Lorem.paragraph,
     currency: "eur",
     price: Faker::Commerce.price,
-    category: CATEGORY.sample
+    category: CATEGORY.sample,
+    order_item_id: rand(1..500)
   })
 end
 
@@ -50,6 +51,41 @@ end
   order_item = OrderItem.create({
     item_order_quantity: rand(1..10),
     product_id: rand(1..50),
-    customer_order_id: rand(1..100)
+    # customer_order_id: rand(1..100)
   })
 end
+
+# CATEGORY = ["Beauty", "Computers", "Books", "Outdoors", "Grocery","Jewelery"]
+
+category = Category.create(
+  [
+    {
+    name: "Beauty",
+    description: Faker::Lorem.paragraph
+    },
+    {
+    name: "Computers",
+    description: Faker::Lorem.paragraph
+    },
+    {
+    name: "Books",
+    description: Faker::Lorem.paragraph
+    },
+    {
+    name: "Outdoors",
+    description: Faker::Lorem.paragraph
+    },
+    {
+    name: "Grocery",
+    description: Faker::Lorem.paragraph
+    },
+    {
+    name: "Jewelery",
+    description: Faker::Lorem.paragraph
+    }
+  ]
+)
+
+
+
+
