@@ -1,5 +1,5 @@
 
-50.times do
+100.times do
   customer = Customer.create({
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -19,43 +19,6 @@
   })
 end
 
-CATEGORY = ["Beauty", "Computers", "Books", "Outdoors", "Grocery","Jewelery"]
-
-50.times do
-  product = Product.create({
-    name: Faker::Commerce.product_name,
-    description: Faker::Lorem.paragraph,
-    currency: "eur",
-    price: Faker::Commerce.price,
-    category: CATEGORY.sample,
-    order_item_id: rand(1..500)
-  })
-end
-
-STATUS = ["pending", "in process", "closed"]
-SHIPPING = ["UPS", "Fedex", "DHL"]
-
-100.times do
-  customer_order = CustomerOrder.create({
-    customer_id: rand(1..50),
-    order_placed_datetime: Faker::Time.between(DateTime.now - 20, DateTime.now),
-    order_delivered_datetime: Faker::Time.between(DateTime.now + 5, DateTime.now + 20),
-    order_shipping_charges: Faker::Number.decimal(2),
-    order_details: Faker::Lorem.paragraph,
-    order_status_code: STATUS.sample,
-    shipping_method: SHIPPING.sample
-  })
-end
-
-500.times do
-  order_item = OrderItem.create({
-    item_order_quantity: rand(1..10),
-    product_id: rand(1..50),
-    # customer_order_id: rand(1..100)
-  })
-end
-
-# CATEGORY = ["Beauty", "Computers", "Books", "Outdoors", "Grocery","Jewelery"]
 
 category = Category.create(
   [
@@ -86,6 +49,36 @@ category = Category.create(
   ]
 )
 
+50.times do
+  product = Product.create({
+    name: Faker::Commerce.product_name,
+    description: Faker::Lorem.paragraph,
+    currency: "eur",
+    price: Faker::Commerce.price,
+    category: Category.all.sample.name
+  })
+end
 
+STATUS = ["pending", "in process", "closed"]
+SHIPPING = ["UPS", "Fedex", "DHL"]
 
+100.times do
+  customer_order = CustomerOrder.create({
+    customer_id: Customer.all.sample.id,
+    order_placed_datetime: Faker::Time.between(DateTime.now - 20, DateTime.now),
+    order_delivered_datetime: Faker::Time.between(DateTime.now + 5, DateTime.now + 20),
+    order_shipping_charges: Faker::Number.decimal(2),
+    order_details: Faker::Lorem.paragraph,
+    order_status_code: STATUS.sample,
+    shipping_method: SHIPPING.sample
+  })
+end
+
+500.times do
+  order_item = OrderItem.create({
+    item_order_quantity: rand(1..10),
+    product_id: Product.all.sample.id,
+    customer_order_id: CustomerOrder.all.sample.id
+  })
+end
 
