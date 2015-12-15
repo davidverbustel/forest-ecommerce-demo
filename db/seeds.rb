@@ -55,7 +55,7 @@ category = Category.create(
     description: Faker::Lorem.paragraph,
     currency: "eur",
     price: Faker::Commerce.price,
-    category: Category.all.sample.name
+    category_id: Category.all.sample.id
   })
 end
 

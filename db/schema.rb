@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207104352) do
+ActiveRecord::Schema.define(version: 20151214231953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,12 +72,15 @@ ActiveRecord::Schema.define(version: 20151207104352) do
     t.text     "description"
     t.string   "currency"
     t.float    "price"
-    t.string   "category"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "category_id"
   end
+
+  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
 
   add_foreign_key "customer_orders", "customers"
   add_foreign_key "order_items", "customer_orders"
   add_foreign_key "order_items", "products"
+  add_foreign_key "products", "categories"
 end
