@@ -1,3 +1,4 @@
+GENDER = ["male", "female"]
 
 100.times do
   customer = Customer.create({
@@ -15,7 +16,8 @@
     phone_number: Faker::PhoneNumber.phone_number,
     latitude: Faker::Address.latitude,
     longitude: Faker::Address.longitude,
-    time_zone: Faker::Address.time_zone
+    time_zone: Faker::Address.time_zone,
+    gender: GENDER.sample
   })
 end
 
