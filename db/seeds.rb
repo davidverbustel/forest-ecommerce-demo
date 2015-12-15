@@ -1,6 +1,6 @@
 GENDER = ["male", "female"]
 
-100.times do
+139.times do
   customer = Customer.create({
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -12,7 +12,7 @@ GENDER = ["male", "female"]
     country_code: Faker::Address.country_code,
     postal_code: Faker::Address.postcode,
     birthday: Faker::Date.between(18000.days.ago, 6480.days.ago),
-    created_at: Faker::Date.between(30.days.ago, 2.days.ago),
+    created_at: Faker::Date.between(300.days.ago, 1.days.ago),
     phone_number: Faker::PhoneNumber.phone_number,
     latitude: Faker::Address.latitude,
     longitude: Faker::Address.longitude,
@@ -51,7 +51,7 @@ category = Category.create(
   ]
 )
 
-50.times do
+128.times do
   product = Product.create({
     name: Faker::Commerce.product_name,
     description: Faker::Lorem.paragraph,
@@ -64,11 +64,11 @@ end
 STATUS = ["pending", "in process", "closed"]
 SHIPPING = ["UPS", "Fedex", "DHL"]
 
-100.times do
+283.times do
   customer_order = CustomerOrder.create({
     customer_id: Customer.all.sample.id,
-    order_placed_datetime: Faker::Time.between(DateTime.now - 20, DateTime.now),
-    order_delivered_datetime: Faker::Time.between(DateTime.now + 5, DateTime.now + 20),
+    order_placed_datetime: Faker::Time.between(DateTime.now - 295, DateTime.now),
+    order_delivered_datetime: Faker::Time.between(DateTime.now - 290, DateTime.now - 5),
     order_shipping_charges: Faker::Number.decimal(2),
     order_details: Faker::Lorem.paragraph,
     order_status_code: STATUS.sample,
@@ -76,7 +76,7 @@ SHIPPING = ["UPS", "Fedex", "DHL"]
   })
 end
 
-500.times do
+691.times do
   order_item = OrderItem.create({
     item_order_quantity: rand(1..10),
     product_id: Product.all.sample.id,
