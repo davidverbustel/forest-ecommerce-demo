@@ -1,4 +1,5 @@
 GENDER = ["male", "female"]
+MAILSHOT = ["true", "false"]
 
 139.times do
   customer = Customer.create({
@@ -17,7 +18,8 @@ GENDER = ["male", "female"]
     latitude: Faker::Address.latitude,
     longitude: Faker::Address.longitude,
     time_zone: Faker::Address.time_zone,
-    gender: GENDER.sample
+    gender: GENDER.sample,
+    mailshot: MAILSHOT.sample
   })
 end
 
