@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'aws-sdk', '< 2.0'
+gem 'paperclip'
 gem 'rack-cors'
 gem 'forest_liana'
 gem 'figaro'
