@@ -118,8 +118,27 @@ class StatsController < ForestLiana::ApplicationController
   # end
 
 
-  def sum_value_products
-    value = Product.all.sum(:price)
+  def total_revenue
+    value = OrderItem.all.sum(:subtotal)
+
+    render json: serialize_model(ForestLiana::Stat.new({value: value}))
+  end
+
+
+# OrderItem.all.group("DATE_TRUNC('month', created_at)").sum(:subtotal).map do |date, sum|
+
+  def revenue_per_month
+    value = OrderItem
+      .all
+      .group("DATE_TRUNC('month', created_at)")
+      .sum(:subtotal)
+      .map do |date, sum|
+        {
+          label: date,
+          values: { value: sum }
+        }
+      end
+      .sort_by {|x| x[:label]}
 
     render json: serialize_model(ForestLiana::Stat.new({value: value}))
   end
