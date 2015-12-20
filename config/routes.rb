@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   mount ForestLiana::Engine => '/forest'
   # post '/api/avg_price_per_month' => 'stats#avg_price_per_month'
-  post '/api/sum_value_products' => 'stats#sum_value_products'
+  post '/api/total_revenue' => 'stats#total_revenue'
   post '/api/orders_per_month' => 'stats#orders_per_month'
+  post '/api/revenue_per_month' => 'stats#revenue_per_month'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

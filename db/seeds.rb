@@ -76,13 +76,17 @@ SHIPPING = ["UPS", "Fedex", "DHL"]
     order_status_code: STATUS.sample,
     shipping_method: SHIPPING.sample
   })
-end
 
-691.times do
-  order_item = OrderItem.create({
-    item_order_quantity: rand(1..10),
-    product_id: Product.all.sample.id,
-    customer_order_id: CustomerOrder.all.sample.id
-  })
+  rand(1..9).times do
+    order_item = OrderItem.create({
+      item_order_quantity: rand(1..10),
+      product_id: Product.all.sample.id,
+      customer_order_id: CustomerOrder.last.id,
+      created_at: CustomerOrder.last.order_placed_datetime,
+      updated_at: CustomerOrder.last.order_placed_datetime
+    })
+    amount = OrderItem.last.item_order_quantity * Product.find(OrderItem.last.product_id).price
+    OrderItem.last.update_attribute(:subtotal, amount)
+  end
 end
 
